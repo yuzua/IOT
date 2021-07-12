@@ -42,7 +42,3 @@ try:
 
 except KeyboardInterrupt:
     pass
-
-問題２ 測定スタートの時間
-        スタートからの終了時間
-問題３ ｐｈｐふぁいるに書き込む
