@@ -1,0 +1,1 @@
+cascade = cv2.CascadeClassifier(casceade_file)

@@ -1,0 +1,2 @@
+GPIO.setmode(GPIO.BCM) # ピン番号ではなくGPIOの番号で指定
+GPIO.setup(21, GPIO.OUT) # GPIO 21を出力として指定

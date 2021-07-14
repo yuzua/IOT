@@ -1,0 +1,59 @@
+// 固定パラメータの設定--------------------
+const { T = true; F = false; }
+
+const {
+// 【入力層】入力画像サイズ*********************
+ImgW = 28; // 画像サイズ:横
+ImgH = 28; // 画像サイズ:縦
+
+// 【隠れ層1:畳み込み】C1パラメータ*********************
+C1Maps = 5; // フィルタ数
+C1KernW = 5; // フィルタサイズ:横
+C1KernH = 5; // フィルタサイズ:縦
+C1StrideW = 1; // スライド量:横
+C1StrideH = 1; // スライド量:縦
+C1OutW = (ImgW - 1) / C1StrideW + 1; // 出力画像サイズ:横
+C1OutH = (ImgH - 1) / C1StrideH + 1; // 出力画像サイズ:縦
+
+// 【隠れ層2:プーリング】P1パラメータ*********************
+P1KernW = 2; // プーリングサイズ:横
+P1KernH = 2; // プーリングサイズ:縦
+P1StrideW = 2; // スライド量:横
+P1StrideH = 2; // スライド量:縦
+P1OutW = (C1OutW - P1KernW) / P1StrideW + 1; // 出力画像サイズ:横
+P1OutH = (C1OutH - P1KernH) / P1StrideH + 1; // 出力画像サイズ:縦
+
+// 【隠れ層3:全結合】H3パラメータ*********************
+H3FC = 150; // ノード数
+
+// 【出力層】パラメータ*********************
+OutN = 2; // 分類数
+}
+
+// ハイパーパラメータの設定--------------------
+// 入力層
+input Picture [ImgH, ImgW]; // 画像入力
+
+// 第1層 C1:畳み込み層
+hidden C1 [C1Maps, C1OutH, C1OutW] // 出力画像[フィルタ数]x[画像縦]x[画像横]
+from Picture convolve {
+InputShape = [ImgH, ImgW]; // 入力画像サイズ
+KernelShape = [C1KernH, C1KernW]; // フィルタサイズ
+Stride = [C1StrideH, C1StrideW]; // スライド量
+Padding = [T, T]; // パディング(余白を付ける)->入力画像と同じサイズにできる
+MapCount = C1Maps; // フィルタの数
+}
+
+// 第2層 P1:プーリング層
+hidden P1 [C1Maps, P1OutH, P1OutW] // 出力画像[フィルタ数]x[画像縦]x[画像横]
+from C1 max pool {
+InputShape = [C1Maps, C1OutH, C1OutW]; // 入力画像
+KernelShape = [1, P1KernH, P1KernW]; // プーリングサイズ
+Stride = [1, P1StrideH, P1StrideW]; // スライド量
+}
+
+// 第3層:全結合層
+hidden H3 [H3FC] from P1 all; // 全結合
+
+// 出力層
+output Result [OutN] softmax from H3 all; // ソフトマックス使用

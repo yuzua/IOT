@@ -1,0 +1,6 @@
+from azure.storage.blob import BlockBlobService, PublicAccess
+STORAGE_ACCOUNT_NAME = "ストレージ名"
+STORAGE_ACCOUNT_KEY = "アクセスキー"
+STORAGE_CONTAINER_NAME = "コンテナー名"
+block_blob_service = BlockBlobService(account_name = STORAGE_ACCOUNT_NAME, account_key = STORAGE_ACCOUNT_KEY)
+block_blob_service.create_blob_from_path(STORAGE_CONTAINER_NAME, 画像ファイル名, 画像ファイルパス)
