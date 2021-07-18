@@ -1,0 +1,7 @@
+try:
+    while True:
+        value = adt7410()
+        print(value)
+        sleep(0.5)
+except KeyboardInterrupt: # ［Ctrl］+［C］キーで処理を終える
+    pass

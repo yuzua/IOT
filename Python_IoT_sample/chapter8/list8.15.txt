@@ -1,0 +1,1 @@
+faceCascade = cv2.CascadeClassifier("/home/pi/デスクトップ/opencv/haarcascade_frontalface_alt.xml")

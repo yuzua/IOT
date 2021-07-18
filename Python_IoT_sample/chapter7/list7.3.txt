@@ -1,0 +1,15 @@
+try:
+   while True:
+       GPIO.output(20, GPIO.HIGH) # GPIO 20をHIGHに変更
+       sleep(5.0) # 5秒回転
+       GPIO.output(20, GPIO.LOW) # GPIO 20をLOWに変更
+       sleep(5.0) # 5秒停止
+       GPIO.output(21, GPIO.HIGH) # GPIO 21をHIGHに変更
+       sleep(5.0) # 5秒回転
+       GPIO.output(21, GPIO.LOW) # GPIO 21をLOWに変更
+       sleep(5.0) # 5秒停止
+       
+except KeyboardInterrupt:
+    pass
+
+GPIO.cleanup()

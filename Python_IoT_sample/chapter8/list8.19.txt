@@ -1,0 +1,5 @@
+0
+人を認識しました。
+不審者
+cam_ifttt_sh.py:108: RuntimeWarning: This channel is already in use, continuing anyway. Use GPIO.setwarnings(False) to disable warnings.
+ GPIO.setup(21, GPIO.OUT) # GPIO 21を出力として指定

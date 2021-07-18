@@ -1,0 +1,8 @@
+# 温度を読み込む関数
+def adt7410():
+    block = bus.read_i2c_block_data(0x48, 0x00, 2)
+    data = (block[0] << 8 | block[1]) >> 3 # 13ビットデータ
+    if (data >= 4096):  # 温度が負の場合
+        data -= 8192
+    temp = data * 0.0625
+    return temp

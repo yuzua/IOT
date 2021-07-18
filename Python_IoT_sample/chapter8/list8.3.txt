@@ -1,0 +1,1 @@
+casceade_file = "/home/pi/デスクトップ/opencv/haarcascade_frontalface_alt.xml"

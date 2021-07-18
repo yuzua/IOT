@@ -1,0 +1,6 @@
+try:
+    while True:
+        GPIO.output(21, GPIO.HIGH) # GPIO 21を HIGHに変更
+        sleep(0.5) # 0.5秒停止
+        GPIO.output(21, GPIO.LOW) # GPIO 21をLOWに変更
+        sleep(0.5) # 0.5秒停止

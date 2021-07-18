@@ -1,0 +1,14 @@
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    image = frame.array
+
+    # フレームを表示
+    cv2.imshow("Frame", image)
+    key = cv2.waitKey(1) & 0xFF
+    # 次のフレームを表示
+    rawCapture.truncate(0)
+
+    # ［Q］キーでストップ
+    if key == ord("q"):
+        break
+
+cv2.destroyAllWindows()

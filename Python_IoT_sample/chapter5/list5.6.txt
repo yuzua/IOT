@@ -1,0 +1,11 @@
+# 関数を実行し繰り返す処理
+try:
+    client = iothub_client_init()
+    while True:
+        inputValue = adt7410()
+        msg_txt_formatted = MSG_TXT % (inputValue)
+        message = IoTHubMessage(msg_txt_formatted)
+        client.send_event_async(message, send_confirmation_callback, None)
+        time.sleep(1)
+except KeyboardInterrupt:
+    pass

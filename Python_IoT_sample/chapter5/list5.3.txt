@@ -1,0 +1,5 @@
+# 初期設定
+CONNECTION_STRING = "********"
+PROTOCOL = IoTHubTransportProvider.MQTT
+MSG_TXT = "{\"temperature\": %.2f}"
+bus = smbus.SMBus(1)

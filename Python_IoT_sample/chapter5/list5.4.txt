@@ -1,0 +1,7 @@
+# IoT Hubにデータを送信するための関数
+def send_confirmation_callback(message, result, user_context):
+    print ( "IoT Hub responded to message with status: %s" % (result) )
+
+def iothub_client_init():
+    client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
+    return client

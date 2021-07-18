@@ -1,0 +1,12 @@
+SELECT
+    *
+INTO
+    Output
+FROM
+    Input
+SELECT
+    *
+INTO
+    OutputBi
+FROM
+    Input
